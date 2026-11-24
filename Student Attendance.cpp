@@ -43,7 +43,8 @@ void markAttendance() {
 // 3. View Records
 void viewRecords() {
     for (int i = 0; i < n; i++) {
-        double percent = present[i] * 100.0 / total[i];
+        double percent = (total [i] == 0) ? 0.0 :
+                           present [i] * 100.0 / total [i] ;
 
         cout << id[i] << " "
              << name[i] << " "
@@ -74,9 +75,12 @@ void highestAttendance() {
     int best = 0;
 
     for (int i = 1; i < n; i++) {
-        if (present[i] * 1.0 / total[i] >
-            present[best] * 1.0 / total[best]) {
-            best = i;
+       double p1 = (total[i] == 0) ? 0.0 :
+                    present [i] * 1.0 / total [i];
+        double p2 = (total[best] == 0) ? 0.0 :
+                     present [best] * 1.0 / total [best];
+           if (p1 > p2) {
+               best = i;
         }
     }
 
@@ -89,8 +93,10 @@ void bubbleSort() {
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
 
-            double p1 = present[j] * 1.0 / total[j];
-            double p2 = present[j + 1] * 1.0 / total[j + 1];
+            double p1 = (total [j] == 0) ? 0.0 :
+                         present [j] * 1.0 / total [j];
+            double p2 = (total [j + 1] == 0) ? 0.0 :
+                         present [j + 1] * 1.0 / total [j + 1];
 
             if (p1 < p2) {
                 int temp;
