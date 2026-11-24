@@ -12,7 +12,7 @@ void addStudent() {
     cin >> id[n];
 
     cout << "Enter Name: ";
-    cin >> name[n];
+    getline(cin >> ws, name[n]);
 
     present[n] = 0;
     total[n] = 0;
